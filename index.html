@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title style="font-size: 30;">TIẾN ĐỘ LÀM 200 BÀI TẬP</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            justify-content: center;
+            align-items: center;
+            background-color: #ffffff;
+        }
+        th, td {
+            border: 1px solid black;
+            width: 50px;
+            padding: 8px;
+            text-align: center;
+            font-weight: bold;
+            color: black;
+        }
+        th {
+            background-color: #fff824;
+            color: #000000;
+        }
+
+        body {
+            background-color: #720000;
+            color: white;
+        }
+
+        h2 {
+            text-align: center; /* Đưa tiêu đề ra giữa trang */
+            font-family: 'Roboto', sans-serif;
+            font-size: 30pt; /* Sử dụng font Roboto */
+        }
+    </style>
+</head>
+<body>
+    <h2>TIẾN ĐỘ 200 BÀI TOÁN</h2>
+    <table id="studentTable">
+        <thead>
+            <tr>
+                <th>Tên</th>
+                <script>
+                    let students = ["Tiến Minh", "Nhật Minh", "Minh (NSL)", "Tú Quyên", "Thảo My", "Bảo Ngọc", "Trang", "Khang", "Lâm", "Vy", "Khánh", "Quang Minh", "Chi", "Thịnh"];
+                    for (let i = 0; i < students.length; i++) {
+                        document.write('<th>' + students[i] + '</th>');
+                    }
+                </script>
+            </tr>
+        </thead>
+        <tbody>
+            <script>
+                function calculateTotal() {
+                    let checkboxes = document.querySelectorAll('input[type="checkbox"]');
+                    checkboxes.forEach(function(checkbox, index) {
+                        localStorage.setItem('checkbox_' + index, checkbox.checked);
+                    });
+                }
+
+                window.onload = function() {
+                    let checkboxes = document.querySelectorAll('input[type="checkbox"]');
+                    checkboxes.forEach(function(checkbox, index) {
+                        let isChecked = localStorage.getItem('checkbox_' + index);
+                        if (isChecked === "true") {
+                            checkbox.checked = true;
+                        }
+                    });
+                }
+
+                for (let j = 1; j <= 200; j++) {
+                    document.write('<tr><td>Bài ' + j + '</td>');
+                    for (let i = 0; i < students.length; i++) {
+                        document.write('<td><input type="checkbox" onchange="calculateTotal()"></td>');
+                    }
+                    document.write('</tr>');
+                }
+            </script>
+        </tbody>
+    </table>
+</body>
+</html>
